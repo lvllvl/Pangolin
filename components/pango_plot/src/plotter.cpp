@@ -526,6 +526,10 @@ void Plotter::Render()
 
             const DataLogBlock* block = log->FirstBlock();
             while(block) {
+                // Retrieve line width for this block
+                float line_width = block->GetLineWidth();
+                glLineWidth( line_width ); // Set line width dynamically for each block
+                 
                 if(ps.contains_id ) {
                     if(id_size < block->Samples() ) {
                         // Create index array that we can bind

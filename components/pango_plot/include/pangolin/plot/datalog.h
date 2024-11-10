@@ -165,6 +165,11 @@ public:
         }
     }
 
+    // Line width for this datalog block
+    void SetLineWidth( float width ) { line_width_ = width; }
+    // Get line width for this datalog block
+    float GetLineWidth() const { return line_width_; }
+
 protected:
     size_t dim;
     size_t max_samples;
@@ -173,6 +178,7 @@ protected:
     std::unique_ptr<float[]> sample_buffer;
 //    std::unique_ptr<DimensionStats[]> stats;
     std::unique_ptr<DataLogBlock> nextBlock;
+    float line_width_ = 1.0f; // Default line width
 };
 
 /// A DataLog can efficiently record floating point sample data of any size.
