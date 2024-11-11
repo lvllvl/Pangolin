@@ -16,6 +16,15 @@ int main(/*int argc, char* argv[]*/)
   labels.push_back(std::string("sin(t)+cos(t)"));
   log.SetLabels(labels);
 
+  // Set different line widths for each series in DataLogBlock
+  log.FirstBlock()->SetLineWidth(1.0f) // First series: sin(t)
+  if (log.FirstBlock()->NextBlock()) {
+    log.FirstBlock()->NextBlock()->SetLinWidth(2.5f); // Second series: cos(t)
+  }
+  if (log.FirstBlock()->NextBlock() && log.FirstBlock()->NextBlock()->NextBlock()) {
+    log.FirstBlock()->NextBlock()->NextBlock()->SetLineWidth(4.0f); // Third series: sin(t)+cos(t)
+  }
+
   const float tinc = 0.01f;
 
   // OpenGL 'view' of data. We might have many views of the same data.
